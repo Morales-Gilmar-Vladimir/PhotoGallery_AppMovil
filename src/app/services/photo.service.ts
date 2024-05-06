@@ -7,6 +7,7 @@ import {Filesystem, Directory} from '@capacitor/filesystem'
   providedIn: 'root'
 })
 export class PhotoService {
+  public photos: UserPhoto[]=[];
 
   constructor() { }
 
@@ -15,7 +16,17 @@ export class PhotoService {
       resultType : CameraResultType.Uri,
       source: CameraSource.Camera,
       quality: 100
-    })
+    });
 
+    this.photos.unshift({
+      filepath:"soon...",
+      webviewPath: capturePhoto.webPath!
+    })
+    
+
+  }}
+  export interface UserPhoto{
+    filepath:string;
+    webviewPath?:string;
   }
-}
+
